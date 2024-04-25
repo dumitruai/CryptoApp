@@ -22,30 +22,139 @@ Config.set("graphics","height","500")
 
 
 ciphers = (
-  "Caesar Cipher", "Bacon"
+    "A1Z26 Cipher","ADFGVX Cipher","AES256-CBC Cipher",
+    "Affine Cipher","Atbash Cipher","Bacon Cipher",
+    "Book Cipher","Caesar Cipher","CaesarS Cipher",
+    "Codes Cipher","Couples Cipher","DoubleCifir Cipher",
+    "Fence Cipher","Great Cipher","Gronsfeld Cipher",
+    "Hill2x2 Cipher","Hill3x3 Cipher","Homophonic Cipher",
+    "Lattice Cipher","Playfair Cipher","Polibiy Cipher",
+    "Ports Cipher","PowVishener Cipher","Psevdo Cipher",
+    "Replace Cipher","ROT13 Cipher","Rotors Cipher","RSA Cipher",
+    "Syllables Cipher","Tarabar Cipher","Trithemius Cipher",
+    "Typex Cipher","Vernam Cipher","Vishener Cipher", "XOR Cipher"
 )
 
 comments = (
+    "### A1Z26 ###",
+    "### ADFGVX ###",
+    "### AES256-CBC ###",
+    "### Affine ###",
+    "### Atbash ###",
+    "### Bacon ###",
+    "### Book ###",
     "### Caesar ###",
-
+    "### CaesarS ###",
+    "### Codes ###",
+    "### Couples ###",
+    "### Double Cifir ###",
+    "### Fence ###",
+    "### Great Cipher ###",
+    "### Gronsfeld ###",
+    "### Hill[2x2] ###",
+    "### Hill[3x3] ###",
+    "### Homophonic ###",
+    "### Lattice ###",
+    "### Playfair ###",
+    "### Polibiy ###",
+    "### Ports ###",
+    "### PowVishener ###",
+    "### Psevdo ###",
+    "### Replace ###",
+    "### ROT13 ###",
+    "### Rotors ###",
+    "### RSA ###",
+    "### Syllables ###",
+    "### Tarabar ###",
+    "### Thritemius ###",
+    "### Typex ###",
+    "### Vernam ###",
+    "### Vishener ###",
+    "### XOR ###"
 )
 
-class CryptographyApp(App):
-
-    def getCipher(self, mode):
+ def getCipher(self, mode):
         if mode.id in ['E','D']:
             self.result.font_size = 14
             if not self.message.text: 
                 self.result.text = ":: Message is not found ::"; return
             if self.toggle[0].state == 'down':
+                self.result.text = a1z26(mode.id, self.message.text)
+            elif self.toggle[1].state == 'down':
+                self.result.text = adfgvx(mode.id, self.message.text, self.key.text)
+            elif self.toggle[2].state == 'down':
+                self.result.text = aes(mode.id, self.message.text, self.key.text)
+            elif self.toggle[3].state == 'down':
+                self.result.text = affine(mode.id, self.message.text, self.key.text)
+            elif self.toggle[4].state == 'down':
+                self.result.text = atbash(self.message.text)
+            elif self.toggle[5].state == 'down':
+                self.result.text = bacon(mode.id, self.message.text)
+            elif self.toggle[6].state == 'down':
+                self.result.text = book(mode.id, self.message.text, self.key.text)
+            elif self.toggle[7].state == 'down':
                 self.result.text = caesar(mode.id, self.message.text, self.key.text)
+            elif self.toggle[8].state == 'down':
+                self.result.text = caesarS(mode.id, self.message.text, self.key.text)
+            elif self.toggle[9].state == 'down':
+                self.result.text = codes(mode.id, self.message.text)
+            elif self.toggle[10].state == 'down':
+                self.result.text = couples(self.message.text)
+            elif self.toggle[11].state == 'down':
+                self.result.text = doubleCifir(mode.id, self.message.text, self.key.text)
+            elif self.toggle[12].state == 'down':
+                self.result.text = fence(mode.id, self.message.text)
+            elif self.toggle[13].state == 'down':
+                self.result.text = greatcipher(mode.id, self.message.text)
+            elif self.toggle[14].state == 'down':
+                self.result.text = gronsfeld(mode.id, self.message.text, self.key.text)
+            elif self.toggle[15].state == 'down':
+                self.result.text = hill2x2(mode.id, self.message.text, self.key.text)
+            elif self.toggle[16].state == 'down':
+                self.result.text = hill3x3(mode.id, self.message.text, self.key.text)
+            elif self.toggle[17].state == 'down':
+                self.result.text = homophonic(mode.id, self.message.text)
+            elif self.toggle[18].state == 'down':
+                self.result.text = lattice(self.message.text)
+            elif self.toggle[19].state == 'down':
+                self.result.text = playfair(mode.id, self.message.text)
+            elif self.toggle[20].state == 'down':
+                self.result.text = polibiy(mode.id, self.message.text)
+            elif self.toggle[21].state == 'down':
+                self.result.text = ports(mode.id, self.message.text)
+            elif self.toggle[22].state == 'down':
+                self.result.text = powVishener(mode.id, self.message.text, self.key.text)
+            elif self.toggle[23].state == 'down':
+                self.result.text = psevdo(mode.id, self.message.text)
+            elif self.toggle[24].state == 'down':
+                self.result.text = replace(mode.id, self.message.text)
+            elif self.toggle[25].state == 'down':
+                self.result.text = rot13(self.message.text)
+            elif self.toggle[26].state == 'down':
+                self.result.text = rotors(mode.id, self.message.text)
+            elif self.toggle[27].state == 'down':
+                self.result.text = rsa(mode.id, self.message.text, self.key.text)
+            elif self.toggle[28].state == 'down':
+                self.result.text = syllables(mode.id, self.message.text)
+            elif self.toggle[29].state == 'down':
+                self.result.text = tarabar(self.message.text)
+            elif self.toggle[30].state == 'down':
+                self.result.text = thritemius(mode.id, self.message.text, self.key.text)
+            elif self.toggle[31].state == 'down':
+                self.result.text = typex(mode.id, self.message.text)
+            elif self.toggle[32].state == 'down':
+                self.result.text = vernam(mode.id, self.message.text, self.key.text)
+            elif self.toggle[33].state == 'down':
+                self.result.text = vishener(mode.id, self.message.text, self.key.text)
+            elif self.toggle[34].state == 'down':
+                self.result.text = xor(self.message.text, self.key.text)
         else:
             switch, code = False, ""
             self.result.font_size = 12
             self.result.text = ""
             for index in range(len(ciphers)):
                 if self.toggle[index].state == 'down':
-                    with open("back.py") as file:
+                    with open("cryptomod.py") as file:
                         for string in file:
                             if switch:
                                 if comments[index] not in string:
